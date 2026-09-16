@@ -1,0 +1,299 @@
+{
+  "note": "Ground truth for the rendered test bills. October 2025 is intentionally missing; bill-2026-03-again.png is a byte-identical duplicate.",
+  "expectedAnomalies": {
+    "gap": "between 2025-09 and 2025-11",
+    "usage_spike": "2026-02",
+    "total_mismatch": "2025-12",
+    "vat_mismatch": "2026-04",
+    "rate_mismatch": "2026-07",
+    "duplicate": "2026-03 (bill-2026-03-again.png)"
+  },
+  "bills": [
+    {
+      "file": "bill-2025-08.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202508-1000",
+      "periodStart": "2025-08-01",
+      "periodEnd": "2025-08-31",
+      "issueDate": "2025-09-06",
+      "days": 31,
+      "kwh": 610,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 330.93,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -23.17
+        }
+      ],
+      "subtotal": 337.66,
+      "vatRate": 0.18,
+      "vat": 60.78,
+      "total": 398.44,
+      "currency": "ILS",
+      "planted": null
+    },
+    {
+      "file": "bill-2025-09.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202509-1037",
+      "periodStart": "2025-09-01",
+      "periodEnd": "2025-09-30",
+      "issueDate": "2025-10-06",
+      "days": 30,
+      "kwh": 420,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 227.85,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -15.95
+        }
+      ],
+      "subtotal": 241.8,
+      "vatRate": 0.18,
+      "vat": 43.52,
+      "total": 285.32,
+      "currency": "ILS",
+      "planted": null
+    },
+    {
+      "file": "bill-2025-11.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202511-1074",
+      "periodStart": "2025-11-01",
+      "periodEnd": "2025-11-30",
+      "issueDate": "2025-12-06",
+      "days": 30,
+      "kwh": 460,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 249.55,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -17.47
+        }
+      ],
+      "subtotal": 261.98,
+      "vatRate": 0.18,
+      "vat": 47.16,
+      "total": 309.14,
+      "currency": "ILS",
+      "planted": null
+    },
+    {
+      "file": "bill-2025-12.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202512-1111",
+      "periodStart": "2025-12-01",
+      "periodEnd": "2025-12-31",
+      "issueDate": "2026-01-06",
+      "days": 31,
+      "kwh": 520,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 282.1,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -19.75
+        }
+      ],
+      "subtotal": 292.25,
+      "vatRate": 0.18,
+      "vat": 52.61,
+      "total": 389.86,
+      "currency": "ILS",
+      "planted": "total_mismatch"
+    },
+    {
+      "file": "bill-2026-01.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202601-1148",
+      "periodStart": "2026-01-01",
+      "periodEnd": "2026-01-31",
+      "issueDate": "2026-02-06",
+      "days": 31,
+      "kwh": 490,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 265.83,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -18.61
+        }
+      ],
+      "subtotal": 277.12,
+      "vatRate": 0.18,
+      "vat": 49.88,
+      "total": 327,
+      "currency": "ILS",
+      "planted": null
+    },
+    {
+      "file": "bill-2026-02.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202602-1185",
+      "periodStart": "2026-02-01",
+      "periodEnd": "2026-02-28",
+      "issueDate": "2026-03-06",
+      "days": 28,
+      "kwh": 850,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 461.13,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -32.28
+        }
+      ],
+      "subtotal": 458.75,
+      "vatRate": 0.18,
+      "vat": 82.58,
+      "total": 541.33,
+      "currency": "ILS",
+      "planted": "usage_spike"
+    },
+    {
+      "file": "bill-2026-03.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202603-1222",
+      "periodStart": "2026-03-01",
+      "periodEnd": "2026-03-31",
+      "issueDate": "2026-04-06",
+      "days": 31,
+      "kwh": 400,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 217,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -15.19
+        }
+      ],
+      "subtotal": 231.71,
+      "vatRate": 0.18,
+      "vat": 41.71,
+      "total": 273.42,
+      "currency": "ILS",
+      "planted": "duplicate"
+    },
+    {
+      "file": "bill-2026-04.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202604-1259",
+      "periodStart": "2026-04-01",
+      "periodEnd": "2026-04-30",
+      "issueDate": "2026-05-06",
+      "days": 30,
+      "kwh": 470,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 254.98,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -17.85
+        }
+      ],
+      "subtotal": 267.03,
+      "vatRate": 0.18,
+      "vat": 86.27,
+      "total": 353.3,
+      "currency": "ILS",
+      "planted": "vat_mismatch"
+    },
+    {
+      "file": "bill-2026-05.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202605-1296",
+      "periodStart": "2026-05-01",
+      "periodEnd": "2026-05-31",
+      "issueDate": "2026-06-06",
+      "days": 31,
+      "kwh": 560,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 303.8,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -21.27
+        }
+      ],
+      "subtotal": 312.43,
+      "vatRate": 0.18,
+      "vat": 56.24,
+      "total": 368.67,
+      "currency": "ILS",
+      "planted": null
+    },
+    {
+      "file": "bill-2026-06.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202606-1333",
+      "periodStart": "2026-06-01",
+      "periodEnd": "2026-06-30",
+      "issueDate": "2026-07-06",
+      "days": 30,
+      "kwh": 660,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 358.05,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -25.06
+        }
+      ],
+      "subtotal": 362.89,
+      "vatRate": 0.18,
+      "vat": 65.32,
+      "total": 428.21,
+      "currency": "ILS",
+      "planted": null
+    },
+    {
+      "file": "bill-2026-07.png",
+      "supplier": "ניצוץ אנרגיה בע״מ",
+      "accountNumber": "7310-44829",
+      "billNumber": "NZ-202607-1370",
+      "periodStart": "2026-07-01",
+      "periodEnd": "2026-07-31",
+      "issueDate": "2026-08-06",
+      "days": 31,
+      "kwh": 720,
+      "ratePerKwh": 0.5425,
+      "energyCharge": 441,
+      "fixedCharge": 29.9,
+      "otherCharges": [
+        {
+          "label": "הנחת ספק 7% על רכיב האנרגיה",
+          "amount": -30.87
+        }
+      ],
+      "subtotal": 440.03,
+      "vatRate": 0.18,
+      "vat": 79.21,
+      "total": 519.24,
+      "currency": "ILS",
+      "planted": "rate_mismatch"
+    }
+  ]
+}
