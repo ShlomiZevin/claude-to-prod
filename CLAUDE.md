@@ -10,7 +10,7 @@ The client never holds an API key; all provider calls go through the server.
 ## Stack (defaults — see slide s14: "defaults are decisions too")
 - Client: React + Vite → Firebase Hosting
 - Server: Node (Express) → Cloud Run
-- DB: Firestore (simple). Cloud SQL only if the data model actually needs it.
+- DB: Firestore Native, region `me-west1` (Tel Aviv) — already created. Cloud SQL only if the data model actually needs it.
 
 ## Cloud targets
 - GCP / Firebase project: `claude-to-prod` (project number 466094823127)
@@ -24,10 +24,10 @@ The client never holds an API key; all provider calls go through the server.
 npm run build && firebase deploy --only hosting --project claude-to-prod
 
 # server
-gcloud run deploy api --source . --project claude-to-prod --region europe-west1 --allow-unauthenticated
+gcloud run deploy api --source . --project claude-to-prod --region me-west1 --allow-unauthenticated
 
 # logs (slide s29 — let Claude see the failure)
-gcloud run services logs read api --project claude-to-prod --region europe-west1 --limit 50
+gcloud run services logs read api --project claude-to-prod --region me-west1 --limit 50
 ```
 
 ## Providers
@@ -37,3 +37,30 @@ Claude orchestrates the others (slide s19): Claude writes the prompt → OpenAI/
 ## How we work (slide s10a)
 Conversation, not prompts. Explain context generously up front; save what worked
 into markdown so it isn't re-explained next session.
+
+## Verified provider details (tested 2026-09-16 — all working)
+
+### OpenAI
+- Text: `gpt-5.6-sol` (also available: gpt-5.6-luna, gpt-5.6-terra, gpt-5.5, gpt-5.4-*)
+- Images: `gpt-image-2`, `gpt-image-2.5-flare`, `gpt-image-2.5-sunburst`
+- ⚠️ Gotcha: use `max_completion_tokens`, NOT `max_tokens` (the old param is rejected).
+
+### Leonardo — gpt-image-2 (⚠️ read before coding, these cost us time)
+The API is split across two versions:
+- **CREATE → v2**: `POST https://cloud.leonardo.ai/api/rest/v2/generations`
+- **READ → v1**: `GET  https://cloud.leonardo.ai/api/rest/v1/generations/{id}`
+  (there is no GET on v2 — it returns `Endpoint not found`)
+
+Working request body:
+```json
+{ "model": "gpt-image-2", "public": false,
+  "parameters": { "prompt": "..." } }
+```
+- `public` is **required** and must be a boolean, or you get `VALIDATION_ERROR`.
+- `model` is rejected by the **v1** create endpoint — v2 only.
+- Response is nested: `{"generate": {"generationId": "...", "cost": {...}}}`
+- One call returns **4 images**; read them from `generations_by_pk.generated_images[].url`.
+
+### Budget (checked before the lecture)
+- Leonardo: **27,830 API credits** left. One gpt-image-2 batch of 4 = ~260 credits ≈ $0.39.
+  That is ~100 more batches — far above the $10 needed. Check via `GET /api/rest/v1/me`.
