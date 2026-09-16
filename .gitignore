@@ -24,3 +24,6 @@ firebase-debug.log*
 coverage/
 uploads/
 tmp/
+
+# fleet unit pointer (local only)
+.fleet-session.*.json
