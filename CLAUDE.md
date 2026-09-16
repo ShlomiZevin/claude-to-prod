@@ -15,6 +15,10 @@ The client never holds an API key; all provider calls go through the server.
 ## Cloud targets
 - GCP / Firebase project: `claude-to-prod` (project number 466094823127)
 - Hosting URL: https://claude-to-prod.web.app
+- Cloud Run service: `api` in `me-west1` → https://api-ygzflpbkoa-zf.a.run.app
+- Hosting rewrites `/api/**` → the Cloud Run service, so the client is same-origin
+  (no CORS, no backend URL in client code). See firebase.json.
+- Full path verified working end to end: Hosting → Cloud Run → Firestore.
 - Billing account: Boostart.io `0105FF-52C389-C813D9`
 - Do NOT touch `claude-to-prod-il` — that project serves the lecture deck.
 
@@ -69,3 +73,15 @@ Working request body:
 `C:\workspace\aba\aba-boards\server\services\leonardo.js` (163 lines) is a working
 Leonardo client already in use: v2 create + v1 poll, COMPLETE/FAILED handling,
 reference-image upload. Lift from it rather than writing a client from scratch.
+
+## Deploying (both halves)
+```bash
+# server
+cd server && gcloud run deploy api --source . --project claude-to-prod   --region me-west1 --allow-unauthenticated
+
+# client
+cd client && npm run build && cd .. && firebase deploy --only hosting
+```
+Local runs need `gcloud auth application-default login` for Firestore.
+Cloud Run does NOT — it injects credentials automatically, which is why
+`new Firestore()` takes no arguments.
