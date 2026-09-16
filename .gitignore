@@ -1,0 +1,26 @@
+# --- secrets: repo is PUBLIC, never commit these ---
+.env
+.env.*
+!.env.example
+*.key
+*-service-account*.json
+serviceAccountKey.json
+gcloud-key.json
+
+# deps / build
+node_modules/
+dist/
+build/
+.vite/
+
+# firebase
+.firebase/
+firebase-debug.log*
+.runtimeconfig.json
+
+# misc
+.DS_Store
+*.log
+coverage/
+uploads/
+tmp/
