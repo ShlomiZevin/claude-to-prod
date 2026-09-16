@@ -64,3 +64,8 @@ Working request body:
 ### Budget (checked before the lecture)
 - Leonardo: **27,830 API credits** left. One gpt-image-2 batch of 4 = ~260 credits ≈ $0.39.
   That is ~100 more batches — far above the $10 needed. Check via `GET /api/rest/v1/me`.
+
+### Proven reference implementation
+`C:\workspace\aba\aba-boards\server\services\leonardo.js` (163 lines) is a working
+Leonardo client already in use: v2 create + v1 poll, COMPLETE/FAILED handling,
+reference-image upload. Lift from it rather than writing a client from scratch.
