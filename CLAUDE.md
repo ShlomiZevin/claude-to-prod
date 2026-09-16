@@ -85,3 +85,25 @@ cd client && npm run build && cd .. && firebase deploy --only hosting
 Local runs need `gcloud auth application-default login` for Firestore.
 Cloud Run does NOT — it injects credentials automatically, which is why
 `new Firestore()` takes no arguments.
+
+## Infra access audit (verified 2026-09-16)
+IAM on `claude-to-prod`: **roles/owner** — full create/delete on everything.
+
+Tested for real against Firestore, not assumed:
+- Create collection + document, subcollection, read, patch, delete → all HTTP 200
+- Queries: equality, range, orderBy + limit → all work
+- Composite index created via gcloud → state READY (took ~7 min to build)
+
+⚠️ **Composite-index gotcha, costs time if unknown:** a query combining
+`where(a == x)` with `orderBy(b)` needs a composite index. The REST API returns
+that error as `[{"error": {...FAILED_PRECONDITION...}}]` — an **array**, so naive
+parsing reads it as "0 results" instead of an error. The message carries a
+console link that creates the index. Building one takes minutes, so declare
+indexes in `firestore.indexes.json` ahead of time rather than mid-demo.
+
+### ElevenLabs (voice) — key copied, works, but scope-limited
+- ✅ Text-to-speech works: returned a valid 51KB MP3 (`eleven_multilingual_v2`).
+- ❌ The key lacks `user_read`, so `/v1/user`, `/v1/voices` and quota endpoints 401.
+  Consequence: **we cannot list voices or check remaining characters** — hardcode a
+  known voice id (e.g. `21m00Tcm4TlvDq8ikWAM`) and don't build a voice picker.
+  If a voice picker is wanted, issue a new key with wider scope first.
